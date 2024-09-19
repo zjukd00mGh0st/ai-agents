@@ -1,0 +1,64 @@
+.sidebar {
+    background-color: rgb(29, 26, 26);
+    height: 100%;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0.1rem 0.5rem;
+}
+
+.sidebar--top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar--agent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.sidebar--agent-avatar {
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+    background-color: white;
+}
+
+.sidebar--agent-name {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.sidebar--agent-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    box-sizing: border-box;
+    padding: 1rem;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.sidebar--agent-menu-item {
+    background-color: rgb(58, 37, 102);
+    width: 100%;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.sidebar--agent-footer {
+    /* flex-grow: 1; */
+    padding: 1rem;
+    font-size: 12px;
+}
