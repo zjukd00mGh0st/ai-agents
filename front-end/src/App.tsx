@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import './App.css'
 import Sidebar from './components/system/Sidebar/Sidebar'
 import Chat from './components/system/Chat/Chat'
