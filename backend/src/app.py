@@ -5,10 +5,11 @@ from .routers.agents.router import router as agents_router
 from .config import GEMINI_API_KEY
 
 
-genai.configure(api_key=GEMINI_API_KEY)
 
 
 def get_app():
+    genai.configure(api_key=GEMINI_API_KEY)
+
     app = FastAPI()
 
     app.add_middleware(

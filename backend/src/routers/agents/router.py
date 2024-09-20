@@ -15,4 +15,5 @@ async def get_agent_response(user_text: GetAgentResponseDTO):
             "data": gemini_response.text,
         }
     except Exception as e:
+        print(e)
         raise HTTPException(status_code=500, detail=str(e))
