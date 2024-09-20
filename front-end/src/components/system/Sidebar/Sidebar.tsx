@@ -1,10 +1,7 @@
 import "./Sidebar.css";
 
 const agentInformation = {
-    "name": "The Witcher",
-    "model": {
-        "name": "oLlama3",
-    }
+    "name": "Tyler",
 }
 
 const sidebarMenu = [
@@ -12,10 +9,6 @@ const sidebarMenu = [
         name: "Chat",
         href: "/"
     },
-    {
-        name: "Settings",
-        href: "/settings",
-    }
 ];
 
 export default function Sidebar() {

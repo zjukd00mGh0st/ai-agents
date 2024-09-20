@@ -1,4 +1,6 @@
 import { useState, useRef } from "react";
+import { getGeminiResponse } from "../../../utils/services/chat";
+import ReactMarkdown from "react-markdown";
 import "./Chat.css";
 
 export default function Chat () {
@@ -22,32 +24,32 @@ export default function Chat () {
         // Add the user question to the box
         const userChat = {
             userType: "user",
-            message: userInputText,
+            message: userInputText.trimEnd(),
         };
 
         setChats((prevChats) => ([...prevChats, userChat]));
 
         // API call to get the backend's reponse of the bot
-
         setIsGeneratingText(true);
 
-        // Delay
-        await new Promise((resolve, _) => {
-            setTimeout(() => {
-                resolve(true);
-            }, 2000);
-        });
-
-        // Add the bot's response to the box
         try {
+            const { status, data } = await getGeminiResponse(userInputText);
+
+            if (status !== 200) {
+                alert(status);
+                return;
+            }
+
+            // Add the bot's response to the box
             const botChat = {
                 userType: "bot",
-                message: "Hello world",
+                message: data.data,
             }
 
             setChats((prevChats) => ([...prevChats, botChat]));
-        } catch (err) {
+        } catch (err: any) {
             console.error(err);
+            alert(err.message);
         } finally {
             setIsGeneratingText(false);
         }
@@ -60,11 +62,11 @@ export default function Chat () {
                 {
                     chats?.map((chatItem, index) => (
                         <div className={`chat--conversation ${chatItem.userType === "user" ? "user--conversation" : "bot--conversation"}`} key={index}>
-                            <p>
+                            <ReactMarkdown>
                                 {
                                     chatItem.message
                                 } 
-                            </p>
+                            </ReactMarkdown>
                         </div>
                     ))
                 }
